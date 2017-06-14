@@ -3,7 +3,7 @@ from PIL import Image
 
 # decoded qr code image from folder qr_img/
 
-decoded_image = decode(Image.open('qr_img/Danijel 16d395c211395678d5fe3354cc9c23ae'))
+decoded_image = decode(Image.open('/tmp/Danijel 16d395c211395678d5fe3354cc9c23ae'))
 print(decoded_image)
 
 #credentials from list presented in bytes
