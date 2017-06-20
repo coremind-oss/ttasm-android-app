@@ -22,7 +22,7 @@ def make_qr():
 #     QR image is created and located in qr_img/ folder
     img = pyqrcode.create(string,version=8,encoding='UTF-8')
     img.png('/tmp/{}.png'.format(string),scale=8)
-    print('Converting for user: {} with password {} is created. Check qr_img folder for currently created qr_images. After that scan generated svg image with any qr code scanner on your mobile to retrieve encoded credentials'.format(name,password_string))
+    print('Converting for user: {} with password {} is created. Check /tmp/ folder for currently created qr_images. After that scan generated svg image with any qr code scanner on your mobile to retrieve encoded credentials'.format(name,password_string))
        
 make_qr()
 

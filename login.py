@@ -23,6 +23,7 @@ class Form(GridLayout):
         btn = Button(text='Log in',font_size=30)
         btn.bind(on_press = self.click)
         self.add_widget(btn)
+    
     def click(self,obj):
         popup = Popup(content=Label(text='Data is sent'),size_hint=(None, None), size=(200, 200))
         popup.open()

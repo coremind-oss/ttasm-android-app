@@ -6,6 +6,7 @@ from kivy.uix.label import Label
 from kivy.uix.popup import Popup
 from datetime import datetime
 
+
  
 
 
@@ -14,17 +15,21 @@ class Structure(BoxLayout):
         super(Structure,self).__init__(orientation='vertical')
 
          
-        self.lbl = Label(text='Welcome to your personal time management application',font_size=25)
+        self.lbl = Label(text='Welcome to your personal time management application',font_size=40,color=[1,1,1,1])
         self.add_widget(self.lbl)
-        self.img = Image(source='TTASM.png',size=(250,250))
+        self.img = Image(source='TTASM_large.png')
         self.add_widget(self.img)
-        btn = Button(text='START',color=[0,1,1,1],font_size=40)
+        btn = Button(text='START',color=[1,1,1,1],font_size=60,background_color = (0,2,0,1))
         btn.bind(on_press=self.action)     
         self.add_widget(btn)
          
          
-    def action(self,obj):
-        print('Sending timestamp...',datetime.now())
+    def action(self,timestamp):
+        timestamp = datetime.now()
+        print('Sending timestamp...',timestamp)
+        popup = Popup(content=Label(text='You send a timestamp \n{}'.format(timestamp)),title='Nicely done :)',size_hint=(None,None),size=(800,800))
+        popup.open()
+        return timestamp
 
          
 class Application(App):

@@ -36,13 +36,15 @@ from __future__ import print_function
 
 from twisted.internet import reactor, protocol
 
-
+from send_timestamp import Structure
 # a client protocol
 
-class EchoClient(protocol.Protocol):
+class EchoClient(protocol.Protocol,Structure):
     """Once connected, send a message, then print the result."""
+
     
     def connectionMade(self):
+        print(Structure.action(self,'timestamp'))
         self.transport.write(("Here is my timestamp").encode())
         print('\nHere is my timestamp')
     
