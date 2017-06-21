@@ -11,21 +11,21 @@ class Form(GridLayout):
         super(Form,self).__init__(**kwargs)
         self.cols = 1
          
-        self.add_widget(Label(text='username',font_size=30))
+        self.add_widget(Label(text='username',font_size=60))
         self.username = TextInput(multiline=False)
         self.add_widget(self.username)
          
-        self.add_widget(Label(text='password',font_size=30))
+        self.add_widget(Label(text='password',font_size=60))
         self.password = TextInput(multiline=False,password=True) 
         self.add_widget(self.password)
          
         
-        btn = Button(text='Log in',font_size=30)
+        btn = Button(text='Log in',font_size=60,background_color=(0,2,0,1))
         btn.bind(on_press = self.click)
         self.add_widget(btn)
     
     def click(self,obj):
-        popup = Popup(content=Label(text='Data is sent'),size_hint=(None, None), size=(200, 200))
+        popup = Popup(content=Label(text='Succesfully logged in'),title='Data have been sent',size_hint=(None, None), size=(600, 600))
         popup.open()
         print(self.username.text,self.password.text)   
  
