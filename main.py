@@ -1,12 +1,9 @@
-from cgitb import text
-
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.lang.builder import custom_callback
 from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition
 
 
-# Create both screens. Please note the root.manager.current: this is how
+# Create screens. Please note the root.manager.current: this is how
 # you can control the ScreenManager from kv. Each screen has by default a
 # property manager that gives you the instance of the ScreenManager used.
 Builder.load_string("""
@@ -19,9 +16,6 @@ Builder.load_string("""
             color: [0,1,0,1]
         Label:
             text:'If you have account, continue to Log In. Otherwise, create account on Sign Up page'
-#         Button:
-#             text: 'Begin screen'
-#             on_press: root.manager.current = 'begin'
         Button:
             text: 'Sign Up'
             on_press: root.manager.current = 'signup'
@@ -30,15 +24,8 @@ Builder.load_string("""
             on_press: root.manager.current = 'login' 
         Button:
             text: 'Quit'
+            on_press: root.close_app()
 
-# <BeginningScreen>:
-#     BoxLayout:
-#         orientation: 'vertical'
-#         Label:
-#             text: 'Welcome to start page here will be TTASM start button'
-#         Button:
-#             text: 'Back to start page'
-#             on_press: root.manager.current = 'menu'
 <SignupScreen>:
     BoxLayout:
         orientation: 'vertical'
@@ -77,19 +64,20 @@ Builder.load_string("""
             on_press: root.manager.current = 'menu'
 """)
 
-# Declare both screens
-# class BeginningScreen(Screen):
-#     pass
+# Declare screens
+
 
 class MenuScreen(Screen):
+    
+    def close_app(self):
+        exit()
     pass
 
 class SignupScreen(Screen):
     
     def show_message(self):  
         print('Hello')
-       
-        
+   
     pass
 
 class LoginScreen(Screen):
@@ -98,7 +86,6 @@ class LoginScreen(Screen):
 # Create the screen manager
 sm = ScreenManager(transition=FadeTransition())
 sm.add_widget(MenuScreen(name='menu'))
-# sm.add_widget(BeginningScreen(name='begin'))
 sm.add_widget(SignupScreen(name='signup'))
 sm.add_widget(LoginScreen(name='login'))
 
