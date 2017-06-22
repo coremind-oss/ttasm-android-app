@@ -9,59 +9,78 @@ from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition
 Builder.load_string("""
 <MenuScreen>:
     BoxLayout:
+        spacing: 10
         orientation: 'vertical'
+        padding:[40,40,40,40]
         Label:
             text:'TTASM APP'
             font_size: 60
             color: [0,1,0,1]
         Label:
-            text:'If you have account, continue to Log In. Otherwise, create account on Sign Up page'
+            text:'If you have account, continue to Log In. Otherwise go to Sign Up page'
         Button:
             text: 'Sign Up'
+            font_size: 40
             on_press: root.manager.current = 'signup'
         Button:
             text: 'Log In'
+            font_size: 40
             on_press: root.manager.current = 'login' 
         Button:
             text: 'Quit'
+            font_size: 40
             on_press: root.close_app()
 
 <SignupScreen>:
     BoxLayout:
+        spacing: 10
         orientation: 'vertical'
+        padding:[40,40,40,40]
         Label:
-            text: 'Welcome to Sign up page'
+            text: '< Sign Up >'
             font_size: 60
+            color: [0,1,0,1]
+
         Label:
             text: 'Username:'
+            font_size: 40
         TextInput:
             id: 'username'
             multiline: False
+            font_size: 40           
         Label:
             text: 'Password:'
+            font_size: 40
         TextInput:
             id: 'password'
             multiline: False
             password: True
+            font_size: 40        
         Button:
             text:'Create account'
-            on_press:root.show_message()                                                     
+            on_press:root.show_message()
+            font_size: 30                                                     
         Button:
             text: 'Back to start page'
             on_press: root.manager.current = 'menu'
+            font_size: 30
             
 <LoginScreen>:
     BoxLayout:
+        spacing: 10
         orientation: 'vertical'
+        padding:[40,40,40,40]
         Label:
-            text: 'Welcome to Log In page'
+            text: '< Log In >'
             font_size: 60
+            color: [0,1,0,1]
+
         Label:
-            text: 'QR scanner for logging will be placed here. After login you will be automatically redirected to page with TTASM button for sending timestamp.'
-            font_size: 12
+            text: 'QR scanner for logging will be placed here.'
         Button:
             text: 'Back to start page'
             on_press: root.manager.current = 'menu'
+            font_size: 40
 """)
 
 # Declare screens
@@ -76,9 +95,8 @@ class MenuScreen(Screen):
 class SignupScreen(Screen):
     
     def show_message(self):  
-        print('Hello')
-   
-    pass
+        print('Here will be credentials')
+        pass
 
 class LoginScreen(Screen):
     pass
